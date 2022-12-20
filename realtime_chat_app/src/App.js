@@ -1,15 +1,28 @@
 
 
 import React from "react"
-import { BrowserRouter as Router, Route } from 'react-router-dom'
-function App() {
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Route,
+} from "react-router-dom"
+import { Chat } from "./components/Chat"
+import { Join } from "./components/Join"
+
+const App = () => {
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Join />,
+    },
+    {
+      path: "/chat",
+      element: <Chat />,
+    },
+  ])
   return (
-    <div className="App">
-      <Router>
-        <Route path="/" exact component={Join} />
-        <Route path="/chat" exact component={Chat} />
-      </Router>
-    </div>
+
+    <RouterProvider router={router} />
   )
 }
 
